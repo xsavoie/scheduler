@@ -4,7 +4,9 @@ import InterviewerListItem from "./InterviewerListItem";
 
 export default function InterviewerList(props) {
 
-  const parsedInterviewerList = props.interviewers.map((interviewer) => (
+  const parsedInterviewerList = props.interviewers.map((interviewer) => {
+    console.log(interviewer)
+    return (
     <InterviewerListItem 
     key={interviewer.id}
     name={interviewer.name}
@@ -12,7 +14,7 @@ export default function InterviewerList(props) {
     selected={interviewer.id === props.value}
     setInterviewer={() => props.onChange(interviewer.id)}
     />
-  ));
+  )});
 
   return (
     <section className="interviewers">
