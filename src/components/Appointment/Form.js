@@ -7,7 +7,7 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
   const reset = () => {
-    setStudent(""); //not clearing for now, according to mentor will be fixed in future activities
+    setStudent(""); 
     setInterviewer("");
   }
 
@@ -15,7 +15,7 @@ export default function Form(props) {
     reset()
     props.onCancel()
   }
-  
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -25,6 +25,7 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
+            value={student}
             onChange={(event) => setStudent(event.target.value)}
           />
         </form>
@@ -32,13 +33,13 @@ export default function Form(props) {
           value={interviewer}
           interviewers={props.interviewers}
           onChange={setInterviewer}
-          
+
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={props.onSave}>Save</Button> 
+          <Button confirm onClick={props.onSave}>Save</Button>
           {/* save btn should log the values but doesnt right now */}
         </section>
       </section>
