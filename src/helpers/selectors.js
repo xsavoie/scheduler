@@ -11,9 +11,9 @@ export function getAppointmentsForDay(state, day) {
 
   appointmentArr.map((appointmentId) => {
     const filteredApp = allAppointments.filter(appointment => appointment.id === appointmentId);
-    return appointmentsToReturn.push(filteredApp[0]);  
+    return appointmentsToReturn.push(filteredApp[0]);
   })
-  
+
   return appointmentsToReturn;
 
 };
@@ -21,20 +21,12 @@ export function getAppointmentsForDay(state, day) {
 
 export function getInterview(state, interview) {
   // Early return if no interview
-  if(!interview) {
+  if (!interview) {
     return null
   }
-  // if(!state.interviewers) {
-  //   return null
-  // }
 
-   if(state.interviewers) {
-    //  console.log("------>", state.interviewers)
-     const interviewersArray = Object.values(state.interviewers)
-     const filteredInterviewer = interviewersArray.filter(interviewer => interviewer.id === interview.interviewer);
+  const interviewersArray = Object.values(state.interviewers)
+  const filteredInterviewer = interviewersArray.filter(interviewer => interviewer.id === interview.interviewer);
 
-     console.log({...interview, interviewer: filteredInterviewer[0]})
-     return {...interview, interviewer: filteredInterviewer[0]}
-  }
-
+  return { ...interview, interviewer: filteredInterviewer[0] }
 };
