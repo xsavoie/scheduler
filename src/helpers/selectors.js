@@ -30,3 +30,23 @@ export function getInterview(state, interview) {
 
   return { ...interview, interviewer: filteredInterviewer[0] }
 };
+
+export function getInterviewerForDay(state, day) {
+  const filteredDays = state.days.filter(oneDay => oneDay.name === day);
+  // Early return if array is empty
+  if (filteredDays.length === 0) {
+    return filteredDays;
+  };
+
+  const interviewerArr = filteredDays[0].interviewers;
+
+  const allInterviewers = Object.values(state.interviewers);
+  const interviewerToReturn = [];
+
+  interviewerArr.map((interviewerId) => {
+    const filteredInterviewer = allInterviewers.filter(interviewer => interviewer.id === interviewerId);
+    return interviewerToReturn.push(filteredInterviewer[0]);
+  })
+
+  return interviewerToReturn;
+};

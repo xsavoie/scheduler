@@ -6,21 +6,21 @@ const useVisualMode = (initial) => {
 
   const transition = (changedMode, replace = false) => {
     if (replace) {
-      history.pop()
-      setHistory([...history, changedMode])
-    }
+      history.pop();
+      setHistory([...history, changedMode]);
+    };
 
     setMode(changedMode);
-    setHistory([...history, changedMode])
+    setHistory([...history, changedMode]);
   };
 
   const back = () => {
     if (history.length > 1) {
-      history.pop()
-      const lastIndex = (history.length - 1)
-      setMode(history[lastIndex])
-    }
-  }
+      history.pop();
+      const lastIndex = (history.length - 1);
+      setMode(history[lastIndex]);
+    };
+  };
 
   return { mode, transition, back };
 }
