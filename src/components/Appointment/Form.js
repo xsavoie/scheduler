@@ -9,12 +9,12 @@ export default function Form(props) {
   const reset = () => {
     setStudent(""); 
     setInterviewer("");
-  }
+  };
 
   const cancel = () => {
-    reset()
-    props.onCancel()
-  }
+    reset();
+    props.onCancel();
+  };
 
   return (
     <main className="appointment__card appointment__card--create">

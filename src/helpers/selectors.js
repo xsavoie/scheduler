@@ -15,21 +15,21 @@ export function getAppointmentsForDay(state, day) {
   })
 
   return appointmentsToReturn;
-
 };
 
 
 export function getInterview(state, interview) {
   // Early return if no interview
   if (!interview) {
-    return null
-  }
+    return null;
+  };
 
-  const interviewersArray = Object.values(state.interviewers)
+  const interviewersArray = Object.values(state.interviewers);
   const filteredInterviewer = interviewersArray.filter(interviewer => interviewer.id === interview.interviewer);
 
-  return { ...interview, interviewer: filteredInterviewer[0] }
+  return { ...interview, interviewer: filteredInterviewer[0] };
 };
+
 
 export function getInterviewerForDay(state, day) {
   const filteredDays = state.days.filter(oneDay => oneDay.name === day);
