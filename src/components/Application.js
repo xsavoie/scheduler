@@ -4,31 +4,21 @@ import Appointment from "components/Appointment";
 import DayList from "./DayList";
 import "components/Appointment";
 import "components/Application.scss";
+import useApplicationData from "hooks/useApplicationData";
 import { getAppointmentsForDay, getInterview, getInterviewerForDay } from "helpers/selectors";
 
+// BUG --> when deleting existing interview, changing days, and going to back initial day
+// TypeError: Cannot read properties of undefined (reading 'name')
+// Only the first time, refreshing the page fixes the issue
 
 export default function Application(props) {
-
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
-
-  const setDay = day => setState({ ...state, day });
-
-  useEffect(() => {
-    Promise.all([
-      axios.get("/api/days"),
-      axios.get("/api/appointments"),
-      axios.get("/api/interviewers")
-    ]).then((all) => {
-      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
-      // console.log(state)
-    })
-  }, []);
-
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
+  
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewerForDay(state, state.day);
 
@@ -42,9 +32,12 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
+
 
   return (
     <main className="layout">
