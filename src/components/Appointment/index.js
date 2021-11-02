@@ -1,3 +1,4 @@
+/*eslint-disable no-unused-vars */
 import React, { Fragment } from "react";
 import "./styles.scss";
 import Header from "./Header";
@@ -21,7 +22,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
-  console.log("$$$$$$$", props)
+  // console.log("$$$$$$$", props)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
