@@ -6,7 +6,7 @@ export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
-  // console.log("***************", props)
+
   const reset = () => {
     setStudent(""); 
     setInterviewer("");
@@ -24,7 +24,7 @@ export default function Form(props) {
     }
 
     setError("");
-    props.onSave(student, interviewer)
+    props.onSave(student, interviewer);
   };
 
   return (
@@ -53,8 +53,6 @@ export default function Form(props) {
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
           <Button confirm onClick={() => validate()}>Save</Button>
-          {/* <Button confirm onClick={() => props.onSave(student, interviewer)}>Save</Button> */}
-          {/* save btn should log the values but doesnt right now */}
         </section>
       </section>
     </main>

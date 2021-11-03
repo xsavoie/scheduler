@@ -35,8 +35,8 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(err => transition(ERROR_SAVE, true))
-  }
+      .catch(err => transition(ERROR_SAVE, true));
+  };
 
   const deleteConfirm = () => {
     transition(CONFIRM);
@@ -46,12 +46,12 @@ export default function Appointment(props) {
     transition(DELETE, true);
     props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch(err => transition(ERROR_DELETE, true))
-  }
+      .catch(err => transition(ERROR_DELETE, true));
+  };
 
   const editApp = () => {
-    transition(EDIT)
-  }
+    transition(EDIT);
+  };
 
   return (
     <article className="appointment">
@@ -71,7 +71,7 @@ export default function Appointment(props) {
           <Show
             student={props.interview.student}
             interviewer={props.interview.interviewer}
-            id={props.id} //pass interview id to show component
+            id={props.id}
             onDelete={deleteConfirm}
             onEdit={editApp}
           />
