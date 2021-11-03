@@ -41,7 +41,7 @@ export default function Appointment(props) {
   const deleteConfirm = () => {
     transition(CONFIRM);
   }
-
+  //-------------------------------
   const deleteApp = () => {
     transition(DELETE, true);
     props.cancelInterview(props.id)
