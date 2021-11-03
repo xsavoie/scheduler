@@ -1,16 +1,21 @@
 # Interview Scheduler
 
-Interview Scheduler is a single page application built using React. It uses Axios to make Ajax request to an API server to connect to a Postgres Database to render and modify appointment. 
+Interview Scheduler is a single page application built using React. It uses Axios to make Ajax requests to an API to store and modify data. 
 
-- SCREENSHOT NAME
-![test](https://github.com/xsavoie/scheduler/blob/master/docs/createAppointement.gif?raw=true)
+Interview Scheduler lets you book, edit or delete appointements for a given day. User's can select an interviewer from a list of available interviewer for the day. 
 
-- SCREENSHOT NAME
-![screenshot description](url)
+## Creating an appointment
+![Create appointment](https://github.com/xsavoie/scheduler/blob/master/docs/createAppointement.gif?raw=true)
 
-- SCREENSHOT NAME
-![screenshot description](url)
+## Editing an appointment
+![Edit appointment](https://github.com/xsavoie/scheduler/blob/master/docs/editAppointment.gif?raw=true)
 
+## Deleting an appointment
+![Delete appointment](https://github.com/xsavoie/scheduler/blob/master/docs/deleteAppointment.gif?raw=true)
+
+## Error handling
+![Timeout error](https://github.com/xsavoie/scheduler/blob/master/docs/errorHandling2.gif?raw=true)
+![Empty field when creating appointment](https://github.com/xsavoie/scheduler/blob/master/docs/errorHandling.gif?raw=true)
 
 ## Setup
 
