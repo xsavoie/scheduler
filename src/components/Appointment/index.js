@@ -22,11 +22,11 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
-  // console.log("$$$$$$$", props)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  // Save interview function
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -38,15 +38,17 @@ export default function Appointment(props) {
       .catch(err => transition(ERROR_SAVE, true));
   };
 
-  const deleteConfirm = () => {
-    transition(CONFIRM);
-  }
-  //-------------------------------
+  // Delete interview function
   const deleteApp = () => {
     transition(DELETE, true);
     props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(err => transition(ERROR_DELETE, true));
+  };
+
+  // Transition functions
+  const deleteConfirm = () => {
+    transition(CONFIRM);
   };
 
   const editApp = () => {
@@ -95,7 +97,7 @@ export default function Appointment(props) {
         {mode === ERROR_SAVE &&
           <Error
             message={"Could not save appointment"}
-            onClose={back} // need to replace=true
+            onClose={back}
           />
         }
         {mode === ERROR_DELETE && <Error

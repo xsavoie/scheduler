@@ -8,9 +8,6 @@ import "components/Application.scss";
 import useApplicationData from "hooks/useApplicationData";
 import { getAppointmentsForDay, getInterview, getInterviewerForDay } from "helpers/selectors";
 
-// BUG --> when deleting existing interview, changing days, and going to back initial day
-// TypeError: Cannot read properties of undefined (reading 'name')
-// Only the first time, refreshing the page fixes the issue
 
 export default function Application(props) {
   const {
