@@ -13,12 +13,23 @@ export default function useVisualMode(initial) {
   }
 
   function back() {
-    history.pop();
-    if (history.length) {
-      const prevMode = history[history.length - 1];
+    let historyCopy = [...history];
+    historyCopy.pop();
+    if (historyCopy.length) {
+      const prevMode = historyCopy[historyCopy.length - 1];
       setMode(prevMode);
+      setHistory(historyCopy)
     };
   };
   
   return { mode, transition, back };
 }
+
+// function back() {
+  // copy history and then modify
+  // history.pop();
+  // if (history.length) {
+    // const prevMode = history[history.length - 1];
+    // setMode(prevMode);
+  // };
+// };
